@@ -7,7 +7,7 @@ $tbPosts = $table_prefix.'posts';
 $contents = $database->select($tbPosts, [
 	"ID","post_content"
 ]);
-
+$num = 0;
 foreach($contents as $con){
 
     //如果存在链接形式如 “/blog/233/”这种形式的链接
@@ -22,12 +22,15 @@ foreach($contents as $con){
         ],[
             'ID'=>$con['ID']
         ]);
+        $num = $num + 1;
 	}
 }
 
-//输出转换结果
-$datas = $database->select($tbPosts, [
-	"post_content"
-]);
+echo 'update '.$num.' rows';
 
-print_r($datas);
+// //输出转换结果
+// $datas = $database->select($tbPosts, [
+// 	"post_content"
+// ]);
+
+// print_r($datas);
