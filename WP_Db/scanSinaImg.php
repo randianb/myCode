@@ -20,8 +20,7 @@ foreach($contents as $con){
     //print_r($matches);
     foreach($matches[1] as $key=>$img){
         if($key >0){
-            // echo $img.'<br/>';
-            // $count = $count+1;
+            dlfile($img);
         }
     }
 }
@@ -34,19 +33,15 @@ foreach($contents as $con){
     
     foreach($matches[1] as $key=>$img){
         if($key >0 &&  $img){
-            //echo $img.'<br/>';
-            //$count = $count+1;
             dlfile($img);
         }
     }
 }
 
-//echo $count;
 
 function dlfile($file_url)
 {
     global $savePath;
-    $content = file_get_contents($file_url);
     
     $save_to = $savePath.preg_replace('/http(s?):\/\//','',$file_url);
     $save_to_arr = explode("/",$save_to);
@@ -55,6 +50,8 @@ function dlfile($file_url)
     if(!file_exists($save_to_path)){
         mkdir($save_to_path,0777,true);
     }
-    if(is_dir($save_to_path) && !file_exists($save_to))
-	    file_put_contents($save_to, $content);
+    if(is_dir($save_to_path) && !file_exists($save_to)){
+        $content = file_get_contents($file_url);
+        file_put_contents($save_to, $content);
+    }
 }
