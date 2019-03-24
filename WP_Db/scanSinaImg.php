@@ -4,7 +4,7 @@ require('db.php');
 
 $tbPosts = $table_prefix.'posts';
 $tbOption = $table_prefix.'options';
-$imgRegex = '/(http(s?)+:\/\/((?!yanzuz)\w|\.|\/|-|_)+?(jpg|jpeg|gif|png))"/i';
+$imgRegex = '/(http(s?)+:\/\/((?!www.waitsun)\w|\.|\/|-|_)+?(jpg|jpeg|gif|png))"/i';
 $savePath = 'images/'; #图片存放目录，须777权限
 $count=0;
 
